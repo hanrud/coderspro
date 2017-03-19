@@ -1,25 +1,38 @@
-// Przeciazenia (overloading)
+// Obiekt this
 
-function message(mes) {
-    console.log(mes);
-};
-
-function message() {
-    console.log("Default");
-};
-
-message("Hello"); //Default
-
-var message = new Function("message", "console.log(message)");
-message = new Function("console.log('Default')");
-message("Hello"); //Default
-
-
-function message(message) {
-  if (arguments.length === 0) {
-    message = "Default";
+/* var person = {
+  name: "Piotr",
+  logName: function() {
+    console.log(person.name);
   }
-    console.log(message);
-}
-console.log(message("Hello")); //Hello
-console.log(message()); //Default
+};
+
+person.logName();
+
+var person = {
+  name: "Piotr",
+  logName: function() {
+    console.log(this.name);
+  }
+};
+
+person.logName(); */
+
+function allSayHello() {
+  console.log(this.name);
+};
+
+var person1 = {
+  name: "piotr",
+  sayHello: allSayHello
+};
+var person2 = {
+  name: "karol",
+  sayHello: allSayHello
+};
+
+var name = "Kinga";
+
+console.log(person1.sayHello); //Piotr
+console.log(person2.sayHello); //Kinga
+console.log(allSayHello()); //Kinga
