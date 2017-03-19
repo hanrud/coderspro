@@ -1,38 +1,18 @@
-// Obiekt this
+// Modyfikacja this call() 
+function logNameAll(arg) {
+    console.log(arg + ": " + this.name);
 
-/* var person = {
-  name: "Piotr",
-  logName: function() {
-    console.log(person.name);
-  }
-};
-
-person.logName();
-
-var person = {
-  name: "Piotr",
-  logName: function() {
-    console.log(this.name);
-  }
-};
-
-person.logName(); */
-
-function allSayHello() {
-  console.log(this.name);
-};
-
+}
 var person1 = {
-  name: "piotr",
-  sayHello: allSayHello
+    name: "piotr"
 };
+
 var person2 = {
-  name: "karol",
-  sayHello: allSayHello
+    name: "Michel"
 };
 
-var name = "Kinga";
+var name = "Michelle";
 
-console.log(person1.sayHello); //Piotr
-console.log(person2.sayHello); //Kinga
-console.log(allSayHello()); //Kinga
+logNameAll.call(this, "global"); //global: Michellle odnosimy sie do obiektu funkcji i wywolujemy metode call ktora ma zawsze 2 parametry, dany kontekst i drugi-przekazujemy dane odwolanie
+logNameAll.call(person1, "person1"); //person1: Piotr
+logNameAll.call(person2, "person2"); // person2: Michel
