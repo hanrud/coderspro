@@ -1,10 +1,18 @@
-// dostęp do wlasciwosci / kluczy
+//Identyfikowanie typow referencyjnych
 
-var array = [];
+function add(a, b) {
+  return a + b;
+}
 
-array.push(2354);
+console.log(typeof add);
 
-array['push'](5333);
+var item = [];
+var obj = {};
 
-var method = 'push';
-array['method'](235);
+console.log(item instanceof Array); //true
+console.log(item instanceof Object); //true
+console.log(obj instanceof Object); //true
+console.log(obj instanceof Array); //false
+console.log(add instanceof Function);  //true
+console.log(add instanceof Object);  //true
+console.log(Array.IsArray(item)); //true - nowa metoda
