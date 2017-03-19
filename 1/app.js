@@ -1,10 +1,20 @@
-// Obiekty - usuwanie wartosci
+function keys(x) {
+  var array = [];
+  array = Object.getOwnPropertyNames(x);
+  return array;
+}
 
-var person = {
-  name: "Hania"
-};
+/* for(key in x) {
+if (obj.hasOwnProperty(key)) {
+arrKeys.push(key)
+}
+} */ //drugie rozwiazanie
 
-console.log(person.name); //Hania
-delete person.name;   
-console.log("name" in person); //false
-console.log(person.name); //undefind
+
+var obj = {
+  red: "dghad",
+  green: "fksjf",
+  blue: "bhjj"
+}
+
+console.log(keys(obj))//['red', 'green', 'blue']
