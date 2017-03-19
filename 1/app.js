@@ -1,5 +1,10 @@
-//literały wyrażeń regularnych
+// dostęp do wlasciwosci / kluczy
 
-var numbers = /\d+/g;
+var array = [];
 
-var numbers2 = new RegExp("\\d+", "g");
+array.push(2354);
+
+array['push'](5333);
+
+var method = 'push';
+array['method'](235);
