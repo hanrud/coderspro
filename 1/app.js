@@ -1,20 +1,8 @@
-function keys(x) {
-  var array = [];
-  array = Object.getOwnPropertyNames(x);
-  return array;
+Date.prototype.nextDay = function() {
+  var today = new Date();
+  today.setDate(today.getDate() + 1);
+
+  return today;
 }
 
-/* for(key in x) {
-if (obj.hasOwnProperty(key)) {
-arrKeys.push(key)
-}
-} */ //drugie rozwiazanie
-
-
-var obj = {
-  red: "dghad",
-  green: "fksjf",
-  blue: "bhjj"
-}
-
-console.log(keys(obj))//['red', 'green', 'blue']
+console.log(Date.prototype.nextDay());
