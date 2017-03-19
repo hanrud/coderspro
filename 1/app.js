@@ -1,17 +1,39 @@
-// Obiekty - dzialania modyfikacje
+// Obiekty - wykrywanie własciwosci
 
-var person 1= {
-  name: "Pawel"
+//NIE!
+/*var person = {
+  number: 0
 };
 
-var person2 = new Object();
+if (person.number) {
+  console.log("true");
+} else {
+  console.log("false");
+} //falses*/
 
-//operacje dodania [[Put]]
-person2.name = "Beata";
-person1.age = 22;
-person2.age = 33;
+// var person1 = {
+//   name: "Hania",
+//   age: 22
+// };
+//
+// var person2 = {
+//   name: "Lukasz",
+//   age: 25
+// };
+//
+// console.log('name' in person1); // true
+// console.log('age' in person2); //true
+// console.log('height' in person2); //falses
 
 
-//modyfikacja [[Set]]
-person1.name = "Grzes";
-person2.name = "Rafal";
+var person1 = {
+  name: "Hania",
+  logName: function() {
+    console.log(this.name);
+  }
+};
+
+console.log('name' in person1); //true
+console.log(person1.hasOwnProperty("name")); //true
+console.log('toString' in person1); //true jezeli nie znajdzie w obiekcie to szuka w rodzicu dlatego true
+console.log(person1.hasOwnProperty("toString")); //false sprawdza czy dana instancja posiada ta metode
