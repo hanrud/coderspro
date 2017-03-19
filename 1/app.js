@@ -1,19 +1,15 @@
-// Funkcje
+// Funkcje jako wartośc
 
-//Właściwosc typu Function [[Call]]
-//deklaracja funckji
-var sum = add(3, 4);
-console.log(sum); //7
-
-function add(a, b) {
-  return a + b;
+function sayHello() {
+  console.log("Hi");
 }
 
-//wyrazenie funkcji
-var result = add(3, 4);
-console.log(result);
-var add = function(a, b) {
-  return a+ b;
-};
+sayHello();
+var sayHello2 = sayHello;
 
-//
+var numbers = [1,45,2,4,45,6,78];
+var foo = numbers.sort(function(a, b) {
+  return a - b;
+});
+
+console.log(foo);
