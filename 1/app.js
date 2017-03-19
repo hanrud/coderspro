@@ -1,36 +1,25 @@
-//Parametry funkcji
+// Przeciazenia (overloading)
 
-function show(value) {
-  return value;
-}
+function message(mes) {
+    console.log(mes);
+};
 
-//Array.isArray(argument)  - false
+function message() {
+    console.log("Default");
+};
 
-console.log(show("Hi")); //Hi
-console.log(show("Hi", 34)); //Hi
-console.log(show.length); //1 - funkcja oczekuje 1 parametru - arnośc funkcji
+message("Hello"); //Default
 
-show = function() {
-  return arguments[0];
-}
+var message = new Function("message", "console.log(message)");
+message = new Function("console.log('Default')");
+message("Hello"); //Default
 
-console.log(show("Hello")); // Hello
-console.log(show("Hello", 45)); //hello
-console.log(show.length); //0
 
-function sum() {
-  var result = 0;
-  var len = arguments.length;
-  var i = 0;
-
-  while ( i < len) {
-    result += arguments[i];
-    i++;
+function message(message) {
+  if (arguments.length === 0) {
+    message = "Default";
   }
-  return result;
+    console.log(message);
 }
-
-console.log(sum(1,5)); //6
-console.log(sum(4,5,7)); //16
-console.log(sum(3)); //3
-console.log(sum()); //0
+console.log(message("Hello")); //Hello
+console.log(message()); //Default
