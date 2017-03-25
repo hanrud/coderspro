@@ -1,21 +1,21 @@
-// Wykrywanie wlasciwosci
+// Usuwanie wlasciwosci z obiektu
 
-if (person.age) {
-  //
-}
-
-var car = {
-  manufacturer: "Ford"
+var animal = {
+  gender: 'female'
 };
 
-console.log('manufacturer' in car); //true
+console.log(animal.gender); //'female'
 
-//Warunek if zwroci false gdy będzie rowne null, undefined, 0, false, NaN, ''
+//delete
 
-var car = {
-    manufacturer: "Ford"
-}
+delete animal.gender;
+console.log(animal.gender); // undefined
 
-console.log(car.hasOwnProperty("manufacturer")); //true
-console.log("toString" in car); //true
-console.log(car.hasOwnProperty("toString")); // false
+//drugi sposob to przypisanie wartosci null
+
+animal.gender = "female";
+console.log(animal.gender); //female
+animal.gender = null;
+
+//nie usuwa wlasciwosci tylko wlasciwoscma wartosc null i mozna ja wykryc przez uzycie hasOwnProperty
+console.log(animal.gender);
