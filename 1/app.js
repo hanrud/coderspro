@@ -1,8 +1,13 @@
-Date.prototype.nextDay = function() {
-  var today = new Date();
-  today.setDate(today.getDate() + 1);
+//Definiowanie własciwosci
 
-  return today;
-}
+var person = {
+  name: "Hania"
+};
 
-console.log(Date.prototype.nextDay());
+person.age = 12;
+
+//[[Put]]  wewnetrzna meoda JS do tworzenia nowych wlasciwosci
+//[[Set]] 
+
+person.name = "Bartek";
+console.log(person.name); //Bartek
