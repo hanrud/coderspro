@@ -1,47 +1,28 @@
 // Atrybuty wspolne
 
-// [[Value]], [[Writeable]]
-// iife
+// Object.freeze() Zamrazanie obiektu nadpisuje seal
+// nie mozna ani dodawac ani usuwac wlasciwosci ani zmieniac
 (function() {
     'use strict';
 
     var person = {
       name: "Konrad"
     };
-})();
 
+    console.log(Object.isExtensible(person));  //true
+    console.log(Object.isFrozen(person));  //false
 
-(function() {
-    'use strict';
-    var person = {};
-    Object.defineProperty(person, 'name', {
-      value: "Pawel",
-      enumerable: true,
-      configuarable: true,
-      writable: true
-    });
-})();
-//Object.seal() zapieczętowanie
-//extensible i configurable  ustawia na false
-(function() {
-    'use strict';
-    var person = {
-      name: "Konrad"
-    };
-    console.log(Object.isExtensible(person)); //true
-    console.log(Object.isSealed(person)); //false
+    Object.freeze(person);
+    console.log(Object.isFrozen(person)); //true
 
-    Object.seal(person);
-    console.log(Object.isExtensible(person)); //false
-    console.log(Object.isSealed(person)); //true
+    person.sayGoodbye = function() {
+      console.log("Say Goodbye ", this.name);
+    }
+    console.log('sayGoodbye' in person); //false
 
-    person.sayHello = function() {
-      console.log(this.name);
-    };
+    person.name = "Piotr";
+    console.log(person.name); //Konrad
 
-    //sprawdzimy istnienie metody
-    console.log("sayHello" in person); //false
-
-    person.name = 'abcd';
-    console.log(person.name); // "Konrad"
+    delete person.name;
+    console.log("name" in person); //true
 })();
