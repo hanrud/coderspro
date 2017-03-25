@@ -1,28 +1,45 @@
-// Atrybuty wspolne
+// Konstruktory i prototypy
 
-// Object.freeze() Zamrazanie obiektu nadpisuje seal
-// nie mozna ani dodawac ani usuwac wlasciwosci ani zmieniac
-(function() {
-    'use strict';
+function Computer() {
+    //
+}
 
-    var person = {
-      name: "Konrad"
+//new zwraca wartośc
+var computer1 = new Computer;
+var computer2 = new Computer;
+
+console.log(computer1.constructor === Computer); //true
+/////
+
+function Person(name) {
+    this.name = name;
+    this.sayHello = function() {
+        console.log("hello");
     };
+}
 
-    console.log(Object.isExtensible(person));  //true
-    console.log(Object.isFrozen(person));  //false
+var person1 = new Person("Piotr");
+var person2 = new Person("Pawel");
+console.log(person1.name); //Piotr
 
-    Object.freeze(person);
-    console.log(Object.isFrozen(person)); //true
+(function() {
+    "use strict";
 
-    person.sayGoodbye = function() {
-      console.log("Say Goodbye ", this.name);
+    function Car(name) {
+        Object.defineProperty(this, 'name', { //to jest to samo co this.name na gorze
+            get: function() {
+                return name;
+            },
+            set: function(value) {
+                name = value;
+            }
+        });
+            this.brrrum = function() {
+              console.log("Bruuuuum");
+            }
+
     }
-    console.log('sayGoodbye' in person); //false
 
-    person.name = "Piotr";
-    console.log(person.name); //Konrad
-
-    delete person.name;
-    console.log("name" in person); //true
+    var car1 = new Car("Szybki");
+    car1.brrrum(); //"Bruuuuum"
 })();
