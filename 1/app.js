@@ -1,13 +1,21 @@
-//Definiowanie własciwosci
+// Wykrywanie wlasciwosci
 
-var person = {
-  name: "Hania"
+if (person.age) {
+  //
+}
+
+var car = {
+  manufacturer: "Ford"
 };
 
-person.age = 12;
+console.log('manufacturer' in car); //true
 
-//[[Put]]  wewnetrzna meoda JS do tworzenia nowych wlasciwosci
-//[[Set]] 
+//Warunek if zwroci false gdy będzie rowne null, undefined, 0, false, NaN, ''
 
-person.name = "Bartek";
-console.log(person.name); //Bartek
+var car = {
+    manufacturer: "Ford"
+}
+
+console.log(car.hasOwnProperty("manufacturer")); //true
+console.log("toString" in car); //true
+console.log(car.hasOwnProperty("toString")); // false
