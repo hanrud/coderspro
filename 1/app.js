@@ -1,18 +1,24 @@
-// Setter  getter
+// Atrybuty wspolne
 
-var person = {
-  _name: 'Marcin',
-  get name() { //musi zwroci wartosc
-    console.log("Hello %s %s", this._name, this._age);
-    //console.log(`Helo ${this._name}`); w es6
-    return this._name;
-  },
-  set name(value) { //musi dostac argument
-    console.log("Zmiana wartosci %s", value);
-    this._name = value;
-  }
-};
+// [[Enumerable]], [[Configuarable]]
 
-console.log(person.name);
-person.name = "Zosia";
-console.log(person.name);
+// Do zmiany tych wlasciwosci uzywamy metody Object.defineProperty()
+
+(function() {
+    'use strict';
+    var person = {
+        name: 'Ula'
+    };
+    console.log(person.propertyIsEnumerable("name")); //true
+    Object.defineProperty(person, "name", {
+        configurable: false
+    });
+
+    Object.defineProperty(person, "name", {
+        enumerable: false
+    });
+    console.log(person.propertyIsEnumerable("name"));
+    Object.defineProperty(person, "name", {
+        configurable: true
+    });
+})();
