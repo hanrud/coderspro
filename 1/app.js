@@ -1,32 +1,33 @@
-// Singleton
+// Wzorzec modulu
 
-var Singleton = (function() {
-    console.count();
-
-    var instance;
-
-    function createInstance() {
-      var obj = new Object('Zostalem stworzony');
-      return obj;
-    }
+var sampleObj = (function() {
+    //definiujemy prywatne dane/informacje
 
     return {
-      getInstance: function() {
-        if (!instance) {
-          console.log("Zwracam instancje");
-          createInstance();
+        //upublicznione/udostepnione dane
+    }
+})();
+
+var person = (function() {
+    var age = 25;
+
+    return {
+        name: 'Zosia',
+        getAge: function() {
+            return age;
+        },
+        growOlder: function() {
+            age++;
         }
-        return instance;
-      }
     }
 
 })();
 
-function init() {
-  var instance1 = Singleton.getInstance(); //kazda instancja tutaj to to samo
-  var instance2 = Singleton.getInstance();
+console.log(person.name); //Zosia
+console.log(person.getAge()); // 25
 
-  console.log(instance1 === instance2); //true
-}
+person.age = 50;
 
-init();
+console.log(person.getAge()); //25
+person.growOlder();
+console.log(person.getAge()); //26 
