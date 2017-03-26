@@ -1,48 +1,69 @@
-// Dziedziczenie obiektow
+// Dziedziczenie konstruktorow
 
-var book = {
-  title: "Abcd"
+// human
+function VeryFriendlyConstructor() {
+    //hhjskfj
+}
+
+//js
+//VeryFriendlyConstructor jest podtypem Object
+// Object jet supertypem VeryFriendlyConstructor
+VeryFriendlyConstructor.prototype = Object.create(Object.prototype, {
+    constructor: {
+        value: VeryFriendlyConstructor,
+        configurable: true,
+        writable: true,
+        enumerable: true
+    }
+});
+
+//
+function Rectangle(length, width) {
+    console.log("Zostal wywolany Rectangle");
+    this.length = length;
+    this.width = width;
+}
+
+Rectangle.prototype.getArea = function() {
+    return this.length * this.width;
 };
 
-var book1 = Object.create(Object.prototype, {
-  title: {
-    value: 'Some another title',
+Rectangle.prototype.toString = function() {
+    return '[Rectangle ' + this.length + ' ' + this.width + ']';
+};
+
+function Square(size) {
+    this.length = size;
+    this.width = size;
+}
+
+//
+// Square.prototype = new Rectangle();
+// Square.prototype.constructor = Square;
+
+Square.prototype = Object.create(Rectangle.prototype, {
+  constructor: {
+    value: Square,
+    configurable: true, //mozna nie pisac chyba ze false
     enumerable: true,
-    configurable: true,
     writable: true
   }
 });
 
-console.log(book);
-console.log(book1);
-
-//
-var person1 = {
-  name:  'Zuzia',
-  sayHello: function() {
-    console.log(this.name);
-  }
+Square.prototype.toString = function() {
+    return '[Square ]' + this.length + ' ' + 'na  ' + this.width + ']';
 };
 
-var person2 = Object.create(person1, {
-  name: {
-    value: 'Ola',
-    enumerable: true,
-    configurable: true,
-    writable: true
-  }
-});
+var rect = new Rectangle(5, 10);
+var square = new Square(6);
 
-person1.sayHello(); //'Zuzia'
-person2.sayHello(); // "Ola"
-
-console.log(person1.hasOwnProperty("sayHello")); //true
-console.log(person1.isPrototypeOf(person2)); //true
-console.log(person2.hasOwnProperty("sayHello")); //false
-console.log(person2.isPrototypeOf(person2)); //false
-
-//
-// unikanie kolizji nazw - konstruktor 'null'
-var emptyObject = Object.create(null);
-console.log('toString' in emptyObject); //false
-console.log('valueOf' in emptyObject); //false
+console.log(rect.getArea()); //50
+console.log(square.getArea()); //36
+console.log(rect.toString()); //'Rectangle... '
+console.log(square.toString()); //'Square... '
+console.log(rect instanceOf Rectangle); // true
+console.log(rect instanceOf Square); // false
+console.log(rect instanceOf Object); // true
+console.log(square instanceOf Square); // true
+console.log(square instanceOf Rectangle); //true
+console.log(square instanceOf Object); //true
