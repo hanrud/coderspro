@@ -1,38 +1,21 @@
-// Metody dziedziczone po Object.prototype
+// Modyfikowanie prototypow
 
-// - hasOwnProperty()
-// - propertyIsEnumerable()
-// - isPrototypeOf()
-// - valueOf() - zwraca wartosc
-// - toString()
-
-//
-//valueOf()
-var now = new Date();
-var earlier = new Date(2017, 01, 01); //2017-01-01
-
-console.log(now > earlier);
-
-var string = "Hello world";
-var response = string.valueOf();
-console.log(response); // Hello world
-
-//toString()
-var book = {
-  title: "Abcd"
+Object.prototype.add = function(val) {
+    return this + val;
 };
 
-var message = 'Book ' + book;
-console.log(message);//book [object Object]
-
-//
-
 var book = {
-  title: "Abcd",
-  toString: function() {
-    return '[Book with title of ' + this.title + ']'
-  }
+    title: "Abcd"
 };
 
-var message = 'Book = ' + book;
-console.log(message); //[Book with title of Abcd]
+console.log(book.add(9)); //[object Object]9
+console.log('tytul '.add(' ksiazki')); //tytul ksiazki
+console.log(document.add(true)); //[object HTMLDocument]true
+
+// zabezpieceie
+var empty = {};
+for (var property in empty) {
+    if (empty.hasOwnPropeerty(property)) {
+        console.log(property);
+    }
+}
