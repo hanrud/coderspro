@@ -1,17 +1,9 @@
-(function() {
-    function sortStrings(array){
-        var newArray = [];
-    for (var i=0; i < array.length; i++ ) {
-       newArray.push(array[i].replace(/[^A-Z]/gi, "")) ;
-    };
-     newArray.sort(function(a,b) {
-         return a.length - b.length;
-     })
+//Dziedziczenie - (prototype chaining)
 
-       return newArray;
-   }
+var book = {
+    title: "ABcd"
+};
 
-   console.log(sortStrings(['fds223aas', 'fd!/ss', 'fds2df/ff', 'fdasssdf', 'a', 'ah23jcz!!!l']));
-})();
+var prototype = Object.getPrototypeOf(book);
 
-//posortowac i usunac wszystkie znaki oprocz liter
+console.log(prototype == Object.prototype); //true
